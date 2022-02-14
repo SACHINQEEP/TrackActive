@@ -5,17 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./src/css/style.css" />
-    <script defer src="./src/js/main.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+      integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+      crossorigin=""
+    ></script>
+
+    <script type="module" src="./src/js/controller.js"></script>
     <title>TrackActive</title>
   </head>
   <body>
     <main>
       <div class="map-Container">
+        <div id="map"></div>
         <div class="content">
           <div class="logo">
             <img src="./src/imgs/trackActve_logo.svg" alt="Logo" />
           </div>
-          <!--<div class="form-container">
+          <div class="form-container">
             <h3>Select the Activity you have done on the selected location</h3>
             <div class="form form--running">
               <div class="type--label">
@@ -52,7 +65,7 @@
                   name="text"
                 />
               </div>
-            </div> -->
+            </div>
           <!-- <div class="form-container">
               <div class="form form--cycling">
                 <div class="type--label">
@@ -122,11 +135,10 @@
               <span class="workout--activity cycling">cycling on Feb 12, 2022</span>
               <span class="bg--red"></span>
             </div> -->
-          <div class="Copyright">
-            <h4>© Copyright by Sachin Patel</h4>
-          </div>
         </div>
-        <div id="map"></div>
+        <div class="Copyright">
+          <h4>© Copyright by Sachin Patel</h4>
+        </div>
       </div>
     </main>
   </body>
