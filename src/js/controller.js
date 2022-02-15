@@ -1,7 +1,14 @@
 import * as model from './model.js';
+import workout from './view/Workout.js';
 
-const fatchingData = function () {
-  model.loadMap(model.state);
+const showWorkoutForm = function () {
+  workout.renderMarkup();
 };
 
-fatchingData();
+// showWorkoutForm();
+
+const init = function () {
+  workout.renderWorkoutForm(showWorkoutForm);
+};
+
+init();
