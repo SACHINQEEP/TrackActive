@@ -1,7 +1,7 @@
-export const state = {
+const state = {
   locationData: [],
+  Map: '',
 };
-
 console.log(state);
 
 const location = function (postion) {
@@ -43,29 +43,55 @@ const loadMap = function () {
     attribution:
       '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
   }).addTo(map);
-
   userEvent(map);
 };
 
+const workout = document.querySelector('.form-container');
+const showFocus = document.querySelector('.distance--focus');
+
 const userEvent = function (showMap) {
   showMap.on('click', function (coord) {
+    workout.classList.remove('hidden');
+    showFocus.focus();
+
+    submitForm(showMap);
+
     const { lat, lng } = coord.latlng;
 
     L.marker([lat, lng])
       .addTo(showMap)
-      .bindPopup('Running on February 12')
+      .bindPopup(
+        L.popup({
+          autoClose: false,
+          className: 'popup--container',
+        })
+      )
+      .setPopupContent('Workout')
       .openPopup();
   });
 };
 
-// const workout = document.querySelector('.form-container');
-// const clickOn = document.querySelector('.map-Container');
-
-// const renderWorkoutForm = function () {
-//   clickOn.addEventListener('click', function (e) {
+// const form = document.querySelector('#my-form');
+// const showingPopup = function () {
+//   form.addEventListener('submit', function (e) {
 //     e.preventDefault();
-//     workout.classList.remove('hidden');
+
+//     const mapData = state.Map;
+//     console.log(mapData);
+
+//     const { lat, lng } = mapData.latlng;
+
+//     L.marker([lat, lng])
+//       .addTo(mapData)
+//       .bindPopup(
+//         L.popup({
+//           autoClose: false,
+//           className: 'popup--container',
+//         })
+//       )
+//       .setPopupContent('Workout')
+//       .openPopup();
 //   });
 // };
 
-// renderWorkoutForm();
+// showingPopup();
