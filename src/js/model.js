@@ -1,8 +1,9 @@
 const formContent = document.querySelector('.form-container');
 const showFocus = document.querySelector('.distance--focus');
 const subForm = document.querySelector('#my-form');
+const showWorkout = document.querySelector('.workout--content');
 
-class Workout {
+class App {
   _Map;
   _coord;
   popupEvent;
@@ -69,7 +70,29 @@ class Workout {
   _newWorkout(e) {
     e.preventDefault();
     this._showPopup();
+    this._renderWorkout();
+  }
+
+  _renderWorkout() {
+    const html = `
+            <div class="workout running--container workout--running">
+              <h3>Running on February 12</h3>
+              <div class="workout--details">
+                <img src="./src/imgs/persion-running.svg" alt="Icon" />
+                <span>2 Km</span>
+                <img src="./src/imgs/stopwatch.svg" alt="Icon" />
+                <span>5 Min</span>
+                <img src="./src/imgs/speed-icon.svg" alt="Icon" />
+                <span>2 Min/Km</span>
+                <img src="./src/imgs/foot-icon.svg" alt="Icon" />
+                <span>20 SPM</span>
+              </div>
+            </div>
+            <div class="bg--green styling--workout"></div>
+          </div>
+    `;
+    showWorkout.insertAdjacentHTML('afterbegin', html);
   }
 }
 
-const newWorkout = new Workout();
+const newWorkout = new App();

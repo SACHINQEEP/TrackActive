@@ -39,6 +39,15 @@ body {
 }
 
 .content {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.content::-webkit-scrollbar {
+  width: 0;
+}
+
+.content {
   width: 90%;
   height: 60vh;
   margin: 1rem auto;
@@ -105,9 +114,18 @@ body {
   letter-spacing: 0.1rem;
 }
 
+.workout--content {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.workout--content::-webkit-scrollbar {
+  width: 0;
+}
+
 .workout {
   border: 1px solid;
-  margin: 0 1rem;
+  margin: 0.3rem 1rem;
 }
 
 .workout {
@@ -117,6 +135,14 @@ body {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
   z-index: 1;
+}
+
+.workout--running {
+  border-left: 6px solid var(--bg-green);
+}
+
+.workout--cycling {
+  border-left: 6px solid var(--bg-red);
 }
 
 span {
@@ -131,17 +157,6 @@ span {
 .workout h3 {
   font-weight: 400;
   font-size: 14px;
-}
-
-.styling--workout {
-  position: relative;
-  top: -90px;
-  left: 15px;
-  width: 0.6rem;
-  height: 5.6rem;
-  z-index: 10;
-  border-radius: 10px 0 0 10px;
-  background-color: var(--bg-green);
 }
 
 .popup--container {

@@ -1,4 +1,4 @@
-18247
+18249
 27D:\TrackActive\package.json132893363532610315 0
 50D:\TrackActive\node_modules\esprima\bin\esparse.js132892253801403498 0
 47D:\TrackActive\node_modules\lmdb-store\index.js132892253944356902 0
@@ -23,7 +23,7 @@
 66D:\TrackActive\node_modules\core-js\internals\array-to-reversed.js132892253931389385 0
 59D:\TrackActive\node_modules\@parcel\workers\src\cpuCount.js132892253852193919 0
 56D:\TrackActive\node_modules\@parcel\workers\lib\index.js132892253865947563 0
-19D:\TrackActive\dist132895122696161793 1
+19D:\TrackActive\dist132897134606362643 1
 43D:\TrackActive\node_modules\expand-brackets132892253805518117 1
 56D:\TrackActive\node_modules\source-map\lib\quick-sort.js132892253882136157 0
 47D:\TrackActive\node_modules\colord\CHANGELOG.md132892253852531974 0
@@ -62,7 +62,7 @@
 74D:\TrackActive\node_modules\core-js\internals\array-species-constructor.js132892253930437359 0
 64D:\TrackActive\node_modules\caniuse-lite\data\features\beacon.js132892253923683543 0
 59D:\TrackActive\node_modules\string.prototype.trimend\.nycrc132892253788549286 0
-25D:\TrackActive\index.html132895122689920224 0
+25D:\TrackActive\index.html132897134208082832 0
 59D:\TrackActive\node_modules\core-js\modules\es.data-view.js132892254026359833 0
 95D:\TrackActive\node_modules\postcss-modules-local-by-default\node_modules\postcss\lib\parser.js132892253894491668 0
 54D:\TrackActive\node_modules\es-abstract\2016\modulo.js132892254046965767 0
@@ -184,7 +184,7 @@
 64D:\TrackActive\node_modules\highlight.js\scss\codepen-embed.scss132892253980664630 0
 69D:\TrackActive\node_modules\sharp\vendor\8.10.6\include\vips\create.h132612604640000000 0
 42D:\TrackActive\node_modules\stylehacks\src132892253864706604 1
-30D:\TrackActive\src\js\model.js132895114645218908 0
+30D:\TrackActive\src\js\model.js132895960764718779 0
 44D:\TrackActive\node_modules\nan\package.json132892253756900294 0
 50D:\TrackActive\src\fonts\Rasa\static\Rasa-Bold.ttf132891686725588499 0
 74D:\TrackActive\node_modules\caniuse-lite\data\features\user-select-none.js132892254067189628 0
@@ -372,7 +372,7 @@
 37D:\TrackActive\src\imgs\stopwatch.svg132891635051906887 0
 63D:\TrackActive\node_modules\core-js\stable\error\constructor.js132892253968123133 0
 57D:\TrackActive\node_modules\@babel\generator\lib\index.js132892253862734332 0
-32D:\TrackActive\src\css\style.css132895112956489611 0
+32D:\TrackActive\src\css\style.css132895138857157653 0
 67D:\TrackActive\node_modules\core-js\modules\esnext.iterator.drop.js132892254058620325 0
 62D:\TrackActive\node_modules\abortcontroller-polyfill\README.md132892253858952959 0
 33D:\TrackActive\node_modules\chalk132892253821122542 1
@@ -5561,6 +5561,7 @@
 46D:\TrackActive\node_modules\lodash\_reorder.js132892253967247086 0
 56D:\TrackActive\node_modules\snapdragon-util\node_modules132892253718789909 1
 63D:\TrackActive\node_modules\core-js\es\string\virtual\strike.js132892254129733141 0
+41D:\TrackActive\dist\index.45b6c430.js.map132897134606362643 0
 52D:\TrackActive\node_modules\node-abi\CONTRIBUTING.md132892255494117728 0
 70D:\TrackActive\node_modules\sharp\node_modules\semver\classes\range.js132892255497660579 0
 82D:\TrackActive\node_modules\postcss-modules-values\node_modules\has-flag\readme.md132892253791476941 0
@@ -14776,7 +14777,7 @@
 57D:\TrackActive\node_modules\core-js\stable\error\index.js132892254114106253 0
 61D:\TrackActive\node_modules\core-js\stable\error\to-string.js132892254133521669 0
 71D:\TrackActive\node_modules\core-js\stable\dom-exception\constructor.js132892253968017916 0
-30D:\TrackActive\dist\index.html132895122694801475 0
+30D:\TrackActive\dist\index.html132897134605962542 0
 67D:\TrackActive\node_modules\core-js\stable\dom-collections\index.js132892254114072135 0
 54D:\TrackActive\node_modules\@types\node\constants.d.ts132892253853953823 0
 70D:\TrackActive\node_modules\core-js\stable\dom-collections\iterator.js132892254117311059 0
@@ -18243,6 +18244,7 @@
 42D:\TrackActive\node_modules\.bin\which.cmd132892254141948022 0
 42D:\TrackActive\node_modules\.bin\which.ps1132892254141938013 0
 37D:\TrackActive\dist\index.0a9fcfdf.js132895122694801475 0
+37D:\TrackActive\dist\index.45b6c430.js132897134605962542 0
 45D:\TrackActive\dist\Rasa-Regular.e90c64f6.ttf132895122694881462 0
 48D:\TrackActive\dist\trackActve_logo.8a7f8b69.svg132895122694801475 0
 36D:\TrackActive\.vscode\settings.json132893376047860258 0
