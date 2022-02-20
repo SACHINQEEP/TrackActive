@@ -5,7 +5,8 @@ const showFocus = document.querySelector('.distance--focus');
 const subForm = document.querySelector('#my-form');
 
 class Workout {
-  // _date = new Date();
+  _date = new Date();
+  _saveDate;
   constructor(distance, duration) {
     this.distance = distance;
     this.duration = duration;
@@ -14,32 +15,32 @@ class Workout {
   }
   // Running on February 12
   getDate() {
-    const day = new Date();
-    console.log(day);
-
     const option = {
       month: 'long',
       day: '2-digit',
     };
-    const discription = new Intl.DateTimeFormat('en-IN', option).format(day);
+    this.discription = new Intl.DateTimeFormat('en-IN', option).format(
+      this._date
+    );
 
-    console.log(discription);
+    this._saveDate = this.discription;
+    console.log(this._saveDate);
   }
 
-  showDiscription() {
-    this.renderDiscription = `${this.type
-      .toUpperCase()
-      .slice(1)
-      .toLowerCase()} on ${this.getDate}`;
+  showDiscription(type) {
+    console.log(type);
+    this.renderDiscription = `${type} on ${this._saveDate}`;
+    console.log(this.renderDiscription);
   }
 }
 
 class Running extends Workout {
-  type = 'Running';
+  type = 'running';
+
   constructor(distance, duration, cadence) {
     super(distance, duration);
     this.cadence = cadence;
-    this.showDiscription();
+    this.showDiscription(this.type);
     this._calcPace();
   }
 
@@ -50,11 +51,11 @@ class Running extends Workout {
 }
 
 class Cycling extends Workout {
-  type = 'Cycling';
+  type = 'cycling';
   constructor(distance, duration, elevationGain) {
     super(distance, duration);
     this.elevationGain = elevationGain;
-    this.showDiscription();
+    this.showDiscription(this.type);
     this._calcSpeed();
   }
 
@@ -64,21 +65,24 @@ class Cycling extends Workout {
 }
 
 const showWorkout = document.querySelector('.workout--content');
-const toogleActive = document.getElementById('Activity');
+const toogleActive = document.querySelector('.activity');
 const distanceEl = document.getElementById('distance');
 const durationEl = document.getElementById('duration');
 const cadenceEl = document.getElementById('cadence');
+const elevationEl = document.getElementById('elevationGain');
+const focusClear = document.querySelector('.type--label');
 
 class App {
   _Map;
   _coord;
   popupEvent;
   _date = new Date();
-  _workouts = [];
-  _workout;
+  #workouts = [];
 
   constructor() {
     this._getLocation();
+
+    toogleActive.addEventListener('change', this._changeWorkout.bind(this));
 
     subForm.addEventListener('submit', this._newWorkout.bind(this));
   }
@@ -146,23 +150,58 @@ class App {
     const type = toogleActive.value;
     const distance = +distanceEl.value;
     const duration = +durationEl.value;
-    let cadence;
 
-    console.log(allPositive(distance, duration), allNumber(distance, duration));
+    let workout;
 
-    if (type === 'Running') {
+    if (type === 'running') {
       const cadence = +cadenceEl.value;
 
       if (
-        !allNumber(distance, duration, cadence) ||
-        !allPositive(distance, duration, cadence)
+        !allPositive(cadence, distance, duration) &&
+        !allNumber(cadence, distance, duration)
       )
-        // return alert('Input have to be positive numbers!');
+        alert(`!Please put some number in the input field`);
 
-        this._workout = new Running(distance, duration, cadence);
+      Workout = new Running(cadence, distance, duration);
     }
+
+    if (type === 'cycling') {
+      const elevation = +elevationGain.value;
+
+      if (
+        !allPositive(elevation, distance, duration) &&
+        !allNumber(distance, duration)
+      )
+        alert(`!Please put some number in the input field`);
+
+      workout = new Cycling(elevation, distance, duration);
+    }
+
+    this._storingWorkout(workout);
+
+    this._clearField();
+
     this._showPopup();
     this._renderWorkout();
+  }
+
+  _storingWorkout(workout) {
+    this.#workouts.push(workout);
+
+    console.log(this.#workouts);
+  }
+
+  _clearField() {
+    distanceEl.value =
+      durationEl.value =
+      elevationEl.value =
+      cadenceEl.value =
+        '';
+  }
+
+  _changeWorkout() {
+    cadenceEl.closest('.form--row').classList.toggle('form--hidden');
+    elevationEl.closest('.form--row').classList.toggle('form--hidden');
   }
 
   _renderWorkout() {

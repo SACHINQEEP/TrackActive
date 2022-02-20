@@ -178,6 +178,10 @@ span {
   visibility: hidden;
 }
 
+.form--hidden {
+  display: none;
+}
+
 /* For Big screen   */
 
 @media (min-width: 40em) {

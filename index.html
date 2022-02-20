@@ -33,11 +33,11 @@
           <h3>Select the Activity you have done on the selected location</h3>
             <form id="my-form">
             <div class="form form--running">
-              <div class="type--label">
+              <div class="type--label ">
                 <label>Type:</label>
-                <select id="Activity">
-                  <option value="text">Running</option>
-                  <option value="text">Cycling</option>
+                <select id="Activity" class="activity">
+                  <option  value="running">Running</option>
+                  <option  value="cycling">Cycling</option>
                 </select>
               </div>
               <div class="type--label ">
@@ -60,7 +60,7 @@
                   name="text"
                 />
               </div>
-              <div class="type--label">
+              <div class="type--label form--row">
                 <label>Cadence:</label>
                 <input
                   class="label--size"
@@ -70,39 +70,20 @@
                   name="text"
                 />
               </div>
-              <button class="btnsubmit" type="submit">Submit</button>
-            </form>
-            </div>
-          </div>
-          <!-- <div class="form-container">
-              <div class="form form--cycling">
-                <div class="type--label">
-                  <label>Distance:</label>
-                  <input
-                    class="label--size"
-                    type="text"
-                    placeholder="Km"
-                    name="text"
-                  />
-                </div>
-                <label>Duration:</label>
-                <input
-                  class="label--size"
-                  type="text"
-                  placeholder="Min"
-                  name="text"
-                />
+              <div class="type--label form--row form--hidden">
                 <label>Elev Gain:</label>
                 <input
                   class="label--size"
+                  id="elevationGain"
                   type="text"
                   placeholder="Meters"
                   name="text"
                 />
-                <span class="bg--red"></span>
               </div>
+              <button class="btnsubmit" type="submit">Submit</button>
+            </form>
             </div>
-          </div> -->
+          </div>
            <div class="workout--content">
           <!--  <div class="workout running--container workout--running">
               <h3>Running on February 12</h3>
