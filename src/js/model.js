@@ -29,7 +29,7 @@ class Workout {
 
   showDiscription(type) {
     console.log(type);
-    this.renderDiscription = `${type} on ${this._saveDate}`;
+    this.renderDiscription = `${type.toUpperCase()} on ${this._saveDate}`;
     console.log(this.renderDiscription);
   }
 }
@@ -162,7 +162,7 @@ class App {
       )
         alert(`!Please put some number in the input field`);
 
-      Workout = new Running(cadence, distance, duration);
+      workout = new Running(cadence, distance, duration);
     }
 
     if (type === 'cycling') {
@@ -182,7 +182,7 @@ class App {
     this._clearField();
 
     this._showPopup();
-    this._renderWorkout();
+    this._renderWorkout(workout);
   }
 
   _storingWorkout(workout) {
@@ -204,25 +204,45 @@ class App {
     elevationEl.closest('.form--row').classList.toggle('form--hidden');
   }
 
-  _renderWorkout() {
+  _renderWorkout(workout) {
     const html = `
-            <div class="workout running--container workout--running">
-              <h3>Running on February 12</h3>
+            <div class="workout running--container workout--${
+              workout.type === 'running' ? 'running' : 'cycling'
+            }">
+              <h3>${workout.type} ${workout.discription}</h3>
               <div class="workout--details">
-                <img src="./src/imgs/persion-running.svg" alt="Icon" />
-                <span>2 Km</span>
+                <${
+                  workout.type === 'running'
+                    ? 'img src="./src/imgs/persion-running.svg" alt="Icon"'
+                    : 'img src="./src/imgs/Cycling-icon.svg" alt="Icon"'
+                } />
+                <span>${
+                  workout.type === 'running'
+                    ? workout.distance
+                    : workout.distance
+                } Km</span>
                 <img src="./src/imgs/stopwatch.svg" alt="Icon" />
-                <span>5 Min</span>
+                <span>${workout.duration} Min</span>
                 <img src="./src/imgs/speed-icon.svg" alt="Icon" />
-                <span>2 Min/Km</span>
-                <img src="./src/imgs/foot-icon.svg" alt="Icon" />
-                <span>20 SPM</span>
+                <span>${
+                  workout.type === 'running' ? workout.pace : workout.speed
+                } Min/Km</span>
+                <${
+                  workout.type === 'running'
+                    ? 'img src="./src/imgs/foot-icon.svg" alt="Icon"'
+                    : 'img src="./src/imgs/elevation-rise.svg" alt="Icon"'
+                } />
+                <span>${
+                  workout.type === 'running'
+                    ? workout.cadence
+                    : workout.elevationGain
+                } SPM</span>
               </div>
             </div>
-            <div class="bg--green styling--workout"></div>
           </div>
     `;
     showWorkout.insertAdjacentHTML('afterbegin', html);
+    console.log(workout);
   }
 }
 
