@@ -7,9 +7,10 @@ const subForm = document.querySelector('#my-form');
 class Workout {
   _date = new Date();
   _saveDate;
-  constructor(distance, duration) {
+  constructor(distance, duration, coordinates) {
     this.distance = distance;
     this.duration = duration;
+    this.coordinates = coordinates;
 
     this.getDate();
   }
@@ -37,8 +38,8 @@ class Workout {
 class Running extends Workout {
   type = 'running';
 
-  constructor(distance, duration, cadence) {
-    super(distance, duration);
+  constructor(distance, duration, cadence, coordinates) {
+    super(distance, duration, coordinates);
     this.cadence = cadence;
     this.showDiscription(this.type);
     this._calcPace();
@@ -52,8 +53,8 @@ class Running extends Workout {
 
 class Cycling extends Workout {
   type = 'cycling';
-  constructor(distance, duration, elevationGain) {
-    super(distance, duration);
+  constructor(distance, duration, elevationGain, coordinates) {
+    super(distance, duration, coordinates);
     this.elevationGain = elevationGain;
     this.showDiscription(this.type);
     this._calcSpeed();
@@ -124,22 +125,6 @@ class App {
     showFocus.focus();
   }
 
-  _showPopup() {
-    const { lat, lng } = this._popupEvent.latlng;
-    console.log(lat, lng);
-
-    L.marker([lat, lng])
-      .addTo(this._Map)
-      .bindPopup(
-        L.popup({
-          autoClose: false,
-          className: 'popup--container',
-        })
-      )
-      .setPopupContent('Workout')
-      .openPopup();
-  }
-
   _newWorkout(e) {
     e.preventDefault();
 
@@ -157,31 +142,33 @@ class App {
       const cadence = +cadenceEl.value;
 
       if (
-        !allPositive(cadence, distance, duration) &&
+        !allPositive(cadence, distance, duration) ||
         !allNumber(cadence, distance, duration)
-      )
+      ) {
         alert(`!Please put some number in the input field`);
-
-      workout = new Running(cadence, distance, duration);
+      }
+      workout = new Running(distance, duration, cadence, this._coord);
+      console.log(workout);
     }
 
     if (type === 'cycling') {
       const elevation = +elevationGain.value;
 
       if (
-        !allPositive(elevation, distance, duration) &&
+        !allPositive(elevation, distance, duration) ||
         !allNumber(distance, duration)
-      )
+      ) {
         alert(`!Please put some number in the input field`);
-
-      workout = new Cycling(elevation, distance, duration);
+      }
+      workout = new Cycling(distance, duration, elevation, this._coord);
     }
 
     this._storingWorkout(workout);
 
     this._clearField();
 
-    this._showPopup();
+    this._showPopup(workout);
+    this._hideForm();
     this._renderWorkout(workout);
   }
 
@@ -216,12 +203,8 @@ class App {
                     ? 'img src="./src/imgs/persion-running.svg" alt="Icon"'
                     : 'img src="./src/imgs/Cycling-icon.svg" alt="Icon"'
                 } />
-                <span>${
-                  workout.type === 'running'
-                    ? workout.distance
-                    : workout.distance
-                } Km</span>
-                <img src="./src/imgs/stopwatch.svg" alt="Icon" />
+                <span>${workout.distance} Km</span>
+                <img src="./src/imgs/stopwatch.svg" alt="Icon"  />
                 <span>${workout.duration} Min</span>
                 <img src="./src/imgs/speed-icon.svg" alt="Icon" />
                 <span>${
@@ -243,6 +226,28 @@ class App {
     `;
     showWorkout.insertAdjacentHTML('afterbegin', html);
     console.log(workout);
+  }
+
+  _hideForm() {
+    formContent.classList.toggle('hidden');
+  }
+
+  _showPopup(workout) {
+    const { lat, lng } = this._popupEvent.latlng;
+    console.log(lat, lng);
+
+    L.marker([lat, lng])
+      .addTo(this._Map)
+      .bindPopup(
+        L.popup({
+          autoClose: false,
+          className: `${
+            workout.type === 'running' ? 'popup--running' : 'popup--cycling'
+          }`,
+        })
+      )
+      .setPopupContent(`${workout.type} on ${workout.discription}`)
+      .openPopup();
   }
 }
 

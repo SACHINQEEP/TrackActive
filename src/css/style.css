@@ -159,8 +159,14 @@ span {
   font-size: 14px;
 }
 
-.popup--container {
-  border-left: var(--bg-green);
+.popup--running {
+  border-left: 5px solid var(--bg-green);
+  border-radius: 15px 0 0 15px;
+}
+
+.popup--cycling {
+  border-left: 5px solid var(--bg-red);
+  border-radius: 15px 0 0 15px;
 }
 
 .Copyright h4 {
@@ -170,7 +176,7 @@ span {
 
 .btnsubmit,
 .hidden {
-  visibility: hidden;
+  display: none;
 }
 
 .form--hidden {
