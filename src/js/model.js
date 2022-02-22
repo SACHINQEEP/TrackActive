@@ -198,23 +198,15 @@ class App {
             }">
               <h3>${workout.type} ${workout.discription}</h3>
               <div class="workout--details">
-                <${
-                  workout.type === 'running'
-                    ? 'img src="./src/imgs/persion-running.svg" alt="Icon"'
-                    : 'img src="./src/imgs/Cycling-icon.svg" alt="Icon"'
-                } />
+                ${workout.type === 'running' ? '🏃‍♂️' : '🚴‍♀️'} 
                 <span>${workout.distance} Km</span>
-                <img src="./src/imgs/stopwatch.svg" alt="Icon"  />
-                <span>${workout.duration} Min</span>
-                <img src="./src/imgs/speed-icon.svg" alt="Icon" />
-                <span>${
+                
+                <span>⏱${workout.duration} Min</span>
+               
+                <span>⚡️${
                   workout.type === 'running' ? workout.pace : workout.speed
                 } Min/Km</span>
-                <${
-                  workout.type === 'running'
-                    ? 'img src="./src/imgs/foot-icon.svg" alt="Icon"'
-                    : 'img src="./src/imgs/elevation-rise.svg" alt="Icon"'
-                } />
+                ${workout.type === 'running' ? '🦶🏼' : '⛰'} 
                 <span>${
                   workout.type === 'running'
                     ? workout.cadence
@@ -224,7 +216,7 @@ class App {
             </div>
           </div>
     `;
-    showWorkout.insertAdjacentHTML('afterbegin', html);
+    showWorkout.insertAdjacentHTML('beforebegin', html);
     console.log(workout);
   }
 
