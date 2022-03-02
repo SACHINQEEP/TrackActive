@@ -56,7 +56,7 @@ body {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   z-index: 9;
-  position: absolute;
+
   top: 0;
   left: 0;
 }
@@ -118,7 +118,9 @@ body {
 .workout--content {
   overflow-y: scroll;
   overflow-x: hidden;
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 1rem;
 }
 
 .workout--content::-webkit-scrollbar {
