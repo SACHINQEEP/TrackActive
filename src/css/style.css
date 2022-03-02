@@ -118,6 +118,7 @@ body {
 .workout--content {
   overflow-y: scroll;
   overflow-x: hidden;
+  position: relative;
 }
 
 .workout--content::-webkit-scrollbar {
